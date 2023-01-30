@@ -11,13 +11,13 @@ function App() {
         CALCULATOR
       </h1>
       <div className=" h-screen flex items-center flex-col justify-center ">
-        <div className=" w-2/4">
-          <div className="d-flex flex-row bg-zinc-900 ">
-            <label className="block text-right mb-1">helo</label>
-            <label className="block text-right mb-1">helo</label>
-            <label className="block text-right mb-1">helo</label>
-            <div className=" w-4/5 m-auto h-px bg-zinc-400  "></div>
+        <div className=" w-2/4 ">
+          <div className="min-h-m-eight overflow-hidden bg-zinc-900 output d-flex align-middle">
+            <p className="break-words text-right text-1xl mb-1">2x</p>
+            <p className="break-words text-right text-3xl mb-1">2</p>
+            <p className="break-words text-right text-3xl ">=4</p>
           </div>
+          <div className="  m-auto h-px bg-zinc-400  "></div>
           <div className="grid grid-cols-4 items-stretch bg-zinc-900 ">
             <button className="h-20 text-orange-500 text-3xl">C</button>
             <button className="h-20 text-orange-500 text-3xl">&larr;</button>
