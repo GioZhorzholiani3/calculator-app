@@ -51,6 +51,7 @@ function App() {
     setOperation("+");
     setPreviousOperand(currentOperand);
     setCurrentOperand("");
+
     console.log("add");
   };
 
@@ -60,6 +61,58 @@ function App() {
     console.log("float");
   };
 
+  const click7 = () => {
+    setCurrentOperand((prev) => prev + "7");
+    console.log("7");
+  };
+
+  const click8 = () => {
+    setCurrentOperand((prev) => prev + "8");
+    console.log("8");
+  };
+
+  const click9 = () => {
+    setCurrentOperand((prev) => prev + "9");
+    console.log("9");
+  };
+
+  const click4 = () => {
+    setCurrentOperand((prev) => prev + "4");
+    console.log("4");
+  };
+
+  const click5 = () => {
+    setCurrentOperand((prev) => prev + "5");
+    console.log("5");
+  };
+
+  const click6 = () => {
+    setCurrentOperand((prev) => prev + "6");
+    console.log("6");
+  };
+
+  const click1 = () => {
+    setCurrentOperand((prev) => prev + "1");
+    console.log("1");
+  };
+
+  const click2 = () => {
+    setCurrentOperand((prev) => prev + "2");
+    console.log("2");
+  };
+
+  const click3 = () => {
+    setCurrentOperand((prev) => prev + "3");
+    console.log("3");
+  };
+
+  const click0 = () => {
+    if (currentOperand[0] === "0" && currentOperand[1] !== ".") return;
+    setCurrentOperand((prev) => prev + "0");
+
+    console.log("0");
+  };
+
   const exponentHandler = () => {
     setOperation("^");
     setPreviousOperand(currentOperand);
@@ -67,8 +120,42 @@ function App() {
     console.log("exponent");
   };
 
-  //todo: write  logic for calculating result
-  const resultHandler = () => {};
+  //done: write  logic for calculating result
+
+  //! : write complex logic for calculating result
+  const resultHandler = () => {
+    let calculation;
+    const prev = parseFloat(previousOperand);
+    const current = parseFloat(currentOperand);
+    if (isNaN(prev) || isNaN(current)) return;
+    switch (operation) {
+      case "+":
+        calculation = prev + current;
+        break;
+      case "-":
+        calculation = prev - current;
+        break;
+      case "*":
+        calculation = prev * current;
+        break;
+      case "/":
+        calculation = prev / current;
+        break;
+      case "%":
+        calculation = prev * (current / 100);
+        break;
+      case "^":
+        calculation = prev ** current;
+        break;
+      default:
+        return;
+    }
+    setResult(calculation);
+    setCurrentOperand("");
+    setPreviousOperand("");
+    setOperation(null);
+    console.log("result");
+  };
 
   return (
     <div className=" h-screen d-flex justify-center overflow-hidden">
@@ -114,27 +201,45 @@ function App() {
             >
               &divide;
             </button>
-            <button className="h-20 text-white text-2xl">7</button>
-            <button className="h-20 text-white text-2xl">8</button>
-            <button className="h-20 text-white text-2xl">9</button>
+            <button onClick={click7} className="h-20 text-white text-2xl">
+              7
+            </button>
+            <button onClick={click8} className="h-20 text-white text-2xl">
+              8
+            </button>
+            <button onClick={click9} className="h-20 text-white text-2xl">
+              9
+            </button>
             <button
               onClick={multiplyHandler}
               className="h-20 text-orange-500 text-3xl"
             >
               &times;
             </button>
-            <button className="h-20 text-white text-2xl">4</button>
-            <button className="h-20 text-white text-2xl">5</button>
-            <button className="h-20 text-white text-2xl">6</button>
+            <button onClick={click4} className="h-20 text-white text-2xl">
+              4
+            </button>
+            <button onClick={click5} className="h-20 text-white text-2xl">
+              5
+            </button>
+            <button onClick={click6} className="h-20 text-white text-2xl">
+              6
+            </button>
             <button
               onClick={substractHandler}
               className="h-20 text-orange-500 text-3xl"
             >
               -
             </button>
-            <button className="h-20 text-white text-2xl">1</button>
-            <button className="h-20 text-white text-2xl">2</button>
-            <button className="h-20 text-white text-2xl">3</button>
+            <button onClick={click1} className="h-20 text-white text-2xl">
+              1
+            </button>
+            <button onClick={click2} className="h-20 text-white text-2xl">
+              2
+            </button>
+            <button onClick={click3} className="h-20 text-white text-2xl">
+              3
+            </button>
             <button
               onClick={addHandler}
               className="h-20 text-orange-500 text-3xl"
@@ -147,7 +252,9 @@ function App() {
             >
               x<sup>Y</sup>
             </button>
-            <button className="h-20 text-white text-2xl">0</button>
+            <button onClick={click0} className="h-20 text-white text-2xl">
+              0
+            </button>
             <button onClick={floatHandler} className="h-20 text-white text-2xl">
               .
             </button>
